@@ -1,0 +1,57 @@
+<div class="signup-form">
+    <h2>Sign Up</h2>
+    <div *ngIf="errorMessage" class="error-message">{{ errorMessage }}</div>
+
+    <form [formGroup]="user" (ngSubmit)="onSubmit()" #signupForm="ngForm">
+        <div class="form-group">
+            <label>Name</label> 
+            <!-- [(ngModel)]="user.name" -->
+            <input type="text" name="name" class="form-control" required formControlName="name"> 
+            <div class="error-message" *ngIf="Name.errors?.['required'] && (Name.touched || Name.dirty)">Name is Required</div>
+            <div class="error-message" *ngIf="Name.errors?.['minlength'] && (Name.touched || Name.dirty)">Name is too short</div>
+            <div class="error-message" *ngIf="Name.errors?.['pattern'] && (Name.touched || Name.dirty)">Name must start with an alphabet</div>
+          </div>
+          <div class="form-group">
+            <label>Mobile</label>
+            <!-- [(ngModel)]="user.mobile" -->
+            <input type="text" name="mobile" class="form-control" formControlName="mobile" required>
+            <div class="error-message" *ngIf="Mobile.errors?.['required'] && (Mobile.touched || Mobile.dirty)">Mobile No. is Required</div>
+            <div class="error-message" *ngIf="Mobile.errors?.['minlength'] && (Mobile.touched || Mobile.dirty)">Mobile No. is too short</div>
+            <div class="error-message" *ngIf="Mobile.errors?.['maxlength'] && (Mobile.touched || Mobile.dirty)">Mobile No. is too long</div>
+            <div class="error-message" *ngIf="Mobile.errors?.['pattern'] && (Mobile.touched || Mobile.dirty)">Mobile No. must not contain any alphabet</div>
+          </div>
+          <div class="form-group">
+            <label>Gst No</label>
+            <!-- [(ngModel)]="user.gstNo" -->
+            <input type="text" name="gstNo" minlength="15" maxlength="15" formControlName="gstNo" class="form-control" required>
+            <div class="error-message" *ngIf="GstNo.errors?.['required'] && (GstNo.touched || GstNo.dirty)">GstNo is Required</div>
+            <div class="error-message" *ngIf="GstNo.errors?.['minlength'] && (GstNo.touched || GstNo.dirty)">GstNo is too short</div>
+            <div class="error-message" *ngIf="GstNo.errors?.['maxlength'] && (GstNo.touched || GstNo.dirty)">GstNo is too long</div>
+            <div class="error-message" *ngIf="GstNo.errors?.['pattern'] && (GstNo.touched || GstNo.dirty)">GstNo Invalid</div>
+          </div>
+      <div class="form-group">
+        <label>Email</label>
+        <!-- [(ngModel)]="user.email" -->
+        <input type="email" name="email" class="form-control" formControlName="email" required>
+        <div class="error-message" *ngIf="Email.errors?.['required'] && (Email.touched || Email.dirty)">Email is Required</div>
+            <div class="error-message" *ngIf="Email.errors?.['email'] && (Email.touched || Email.dirty)">EmailId Invalid </div>
+      </div>
+      <div class="form-group">
+        <label>Password</label>
+        <!-- [(ngModel)]="user.password" -->
+        <input type="password" name="password" class="form-control" formControlName="password" required>
+        <div class="error-message" *ngIf="Password.errors?.['required'] && (Password.touched || Password.dirty)">Password is Required</div>
+            <div class="error-message" *ngIf="Password.errors?.['minlength'] && (Password.touched || Password.dirty)">Password is too short</div>
+            <div class="error-message" *ngIf="Password.errors?.['maxlength'] && (Password.touched || Password.dirty)">Password is too long</div>
+      </div>
+     
+      <div class="form-group">
+        <button class="form-control" type="submit" class="btn btn-primary">Sign Up</button>
+      </div>
+
+      <div class="text-center">
+        <p>Already have an account? Click here to  <a routerLink="/login">Login</a></p>
+      </div>
+    </form>
+  </div>
+  

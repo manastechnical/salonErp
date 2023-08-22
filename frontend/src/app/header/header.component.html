@@ -1,0 +1,36 @@
+<header class="header" *ngIf="isLoggedIn">
+    <div class="header-left">
+      <!-- Close button of the sidenav -->
+      <button class="close-button"></button>
+    </div>
+    <div class="header-middle">
+      <!-- Add button -->
+      <button class="add-button" (click)="toggleDropdown()"></button>
+      <!-- Dropdown menu -->
+      <div class="dropdown-menu" *ngIf="isDropdownOpen">
+        <ul>
+          <li><a href="#">Customer</a></li>
+          <li><a href="#">Staff</a></li>
+          <li><a href="#">Service</a></li>
+          <li><a href="#">Expense</a></li>
+        </ul>
+      </div>
+    </div>
+    <div class="header-right">
+      <!-- Logo and name of the salon -->
+      <div class="logo-name" (click)="openUserProfile()">
+        <img [src]="logoUrl" alt="Salon Logo" class="logo">
+        <div class="user-info">
+          <p class="user-name">{{ userName }}</p>
+          <p class="user-position">{{ userPosition }}</p>
+          <p class="user-email">{{ userEmail }}</p>
+        </div>
+      </div>
+      <!-- Settings and logout buttons -->
+      <div class="user-buttons">
+        <button class="settings-button"></button>
+        <button class="logout-button" (click)="logout()"></button>
+      </div>
+    </div>
+  </header>
+  
